@@ -54,8 +54,10 @@ class UserActivity : AppCompatActivity() {
     }
 
     private fun showError(){
+        progress.visibility = View.GONE
         error_dialog.visibility = View.VISIBLE
         refresh.setOnClickListener {
+            progress.visibility = View.VISIBLE
             error_dialog.visibility = View.GONE
             loadData()
         }
