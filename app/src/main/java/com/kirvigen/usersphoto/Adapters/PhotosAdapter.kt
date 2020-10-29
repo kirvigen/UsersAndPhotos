@@ -23,7 +23,7 @@ class PhotosAdapter(val photos: MutableList<Photo>): RecyclerView.Adapter<Photos
 
     init {
         val maxMemory = (Runtime.getRuntime().maxMemory() / 1024).toInt()
-        val cacheSize = maxMemory/3
+        val cacheSize = maxMemory/4
         memoryCache = object : LruCache<String, Bitmap>(cacheSize) {
             override fun sizeOf(key: String, bitmap: Bitmap): Int {
                 return bitmap.byteCount / 1024
