@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">UsersPhoto</string>
+    <string name="ethernet_error">Не удалось загрузить данные</string>
+    <string name="refresh">Повторить</string>
+</resources>
