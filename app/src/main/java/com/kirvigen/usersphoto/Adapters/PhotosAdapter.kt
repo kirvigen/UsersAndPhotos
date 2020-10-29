@@ -68,8 +68,6 @@ class PhotosAdapter(val photos: MutableList<Photo>): RecyclerView.Adapter<Photos
         holder.downloadTask?.cancel(true)
     }
 
-
-
     class Holder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
         private val title:TextView = itemView.findViewById(R.id.title)

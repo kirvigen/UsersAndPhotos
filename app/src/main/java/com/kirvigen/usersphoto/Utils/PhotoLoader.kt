@@ -1,11 +1,9 @@
 package com.kirvigen.usersphoto.Utils
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.AsyncTask
-import android.util.Log
 import android.util.LruCache
 import android.view.animation.AlphaAnimation
 import android.view.animation.AnimationSet
@@ -42,7 +40,7 @@ class PhotoLoader {
         return this
     }
 
-    fun setImageBitmap(imageView: ImageView,bitmap: Bitmap){
+    fun intoBitmap(imageView: ImageView, bitmap: Bitmap){
         imageView.setImageBitmap(bitmap)
         if(fade) {
             val fadeIn = AlphaAnimation(0f, 1f)
@@ -60,12 +58,12 @@ class PhotoLoader {
     fun into(imageView: ImageView, cache: LruCache<String, Bitmap>):AsyncTask<String,Void,Bitmap>?{
         imageView.setImageResource(R.color.White)
         cache.get(url)?.also {
-            setImageBitmap(imageView,it)
+            intoBitmap(imageView,it)
             callback?.onSuccess(it,url)
         }?:run{
              return doAsync{bitmap,u->
                 bitmap?.let {
-                    setImageBitmap(imageView,it)
+                    intoBitmap(imageView,it)
                     callback?.onSuccess(it,url)
                     cache.put(url, it)
                 }
